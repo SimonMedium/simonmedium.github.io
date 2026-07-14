@@ -98,13 +98,26 @@ footer {
     margin: 20px auto;
 }
 
-.contact-icon {
-    width: 25px;
-    vertical-align: middle;
-    margin-right: 8px;
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
 }
 
-    .social-icon {
+.contact-links a {
+    text-decoration: none;
+    color: #5b4b8a;
+    font-weight: 600;
+}
+
+.contact-icon {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 8px;
+}
+
+.social-icon {
     width: 32px;
     height: 32px;
     margin: 0 8px;
@@ -227,7 +240,7 @@ Visit The Circle @ Greenside Facebook Page
 If you would like to enquire about church bookings, The Circle @ Greenside, or have any questions, I'd be delighted to hear from you.
 </p>
 
-<p class="contact-links">
+<div class="contact-links">
 
     <a href="mailto:Simon.Armstrong.Medium@hotmail.com" aria-label="Email Simon">
         <img src="icons8-email-50.png" alt="Email icon" class="contact-icon"><br>
@@ -239,7 +252,7 @@ If you would like to enquire about church bookings, The Circle @ Greenside, or h
         <span>Call</span>
     </a>
 
-</p>
+</div>
 
 </section>
 
