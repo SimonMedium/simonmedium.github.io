@@ -39,9 +39,9 @@ header img {
 }
 
 nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
     justify-content: center;
-    flex-wrap: wrap;
     gap: 10px;
     padding: 20px;
 }
@@ -49,15 +49,20 @@ nav {
 nav a {
     color: #5b4b8a;
     text-decoration: none;
-    margin: 5px 8px;
     font-weight: bold;
     font-size: 14px;
-    display: inline-block;
     white-space: nowrap;
 }
 
 nav a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    nav {
+        grid-template-columns: repeat(2, auto);
+        gap: 12px 20px;
+    }
 }
     
 section {
