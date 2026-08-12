@@ -338,36 +338,52 @@
 }
 
 
-/* Monthly diary grouping */
-.service-months {
+/* Monthly diary selector */
+.month-tabs {
+  margin: 0 0 34px;
   display: grid;
-  gap: 48px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.service-month {
-  display: grid;
-  gap: 22px;
+.month-tab {
+  min-height: 48px;
+  padding: 11px 18px;
+  background: var(--warm-white);
+  color: var(--serving-dark);
+  border: 1px solid var(--brass);
+  border-radius: 8px;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
 
-.service-month-heading {
-  display: grid;
-  grid-template-columns: minmax(24px, 1fr) auto minmax(24px, 1fr);
-  gap: 18px;
-  align-items: center;
+.month-tab:hover,
+.month-tab:focus-visible {
+  background: var(--serving-light);
+  box-shadow: 0 7px 16px rgba(36, 58, 68, 0.11);
+  outline: none;
 }
 
-.service-month-heading span {
-  height: 1px;
-  background: rgba(183, 144, 85, 0.58);
+.month-tab.active {
+  background: var(--serving-dark);
+  color: var(--serving-light);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
-.service-month-heading h3 {
-  margin: 0;
+.service-month-panel[hidden] {
+  display: none;
+}
+
+.selected-month-title {
+  margin: 0 0 22px;
   color: var(--serving-dark);
   font-family: "Marcellus", Georgia, serif;
-  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
   font-weight: 400;
-  letter-spacing: 0.02em;
   text-align: center;
 }
 
@@ -381,21 +397,29 @@
 }
 
 .service-standard {
-  background: var(--serving-dark);
-  color: var(--serving-light);
+  background: var(--journey-dark);
+  color: var(--journey-light);
 }
 
 .service-special {
-  background: var(--contact-dark);
-  color: var(--contact-light);
+  background: #fbf8f1;
+  color: var(--home-dark);
+  border-color: var(--brass);
 }
 
 @media (max-width: 560px) {
-  .service-months {
-    gap: 38px;
+  .month-tabs {
+    gap: 7px;
+    margin-bottom: 28px;
   }
 
-  .service-month-heading {
-    gap: 12px;
+  .month-tab {
+    min-height: 44px;
+    padding: 9px 5px;
+    font-size: 0.7rem;
+  }
+
+  .selected-month-title {
+    margin-bottom: 18px;
   }
 }
