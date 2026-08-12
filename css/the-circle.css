@@ -209,6 +209,10 @@
   font-size:1.4rem;
 }
 
+.circle-signature-line{
+  display:inline;
+}
+
 @media (max-width:900px){
 
   .circle-hero-inner,
@@ -252,17 +256,21 @@
   }
 
   .circle-signature{
-    max-width:460px;
+    max-width:320px;
   }
 
   .circle-signature-inner{
-    padding:24px 18px;
+    padding:22px 18px;
     border-radius:14px;
   }
 
   .circle-signature-inner p{
     font-size:1.12rem;
     line-height:1.55;
+  }
+
+  .circle-signature-line{
+    display:block;
   }
 
 }
