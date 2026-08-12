@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="Images/favicon-512x512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/the-circle.css?v=20260812-4">
+  <link rel="stylesheet" href="css/the-circle.css?v=20260812-5">
 </head>
 <body class="page-circle">
 
@@ -189,41 +189,53 @@
   </div>
 
   <div class="circle-details-grid">
-    <article class="circle-detail-card">
-      <h3>Where</h3>
-      <p>Greenside Community Centre</p>
-      <p>NE40 4AA</p>
-    </article>
+    <details class="circle-detail-card" open>
+      <summary>Where</summary>
+      <div class="circle-detail-content">
+        <p>Greenside Community Centre</p>
+        <p>NE40 4AA</p>
+      </div>
+    </details>
 
-    <article class="circle-detail-card">
-      <h3>When</h3>
-      <p>Every four weeks unless anything changes.</p>
-      <p>Doors open at 6:45pm.</p>
-      <p>We usually begin between 7:00pm and 7:15pm.</p>
-      <p>We normally finish around 8:15pm to 8:20pm.</p>
-    </article>
+    <details class="circle-detail-card">
+      <summary>When</summary>
+      <div class="circle-detail-content">
+        <p>Every four weeks unless anything changes.</p>
+        <p>Doors open at 6:45pm.</p>
+        <p>We usually begin between 7:00pm and 7:15pm.</p>
+        <p>We normally finish around 8:15pm to 8:20pm.</p>
+      </div>
+    </details>
 
-    <article class="circle-detail-card">
-      <h3>Cost</h3>
-      <p>£3 entry.</p>
-      <p>Optional £1 raffle.</p>
-    </article>
+    <details class="circle-detail-card">
+      <summary>Cost</summary>
+      <div class="circle-detail-content">
+        <p>£3 entry.</p>
+        <p>Optional £1 raffle.</p>
+      </div>
+    </details>
 
-    <article class="circle-detail-card">
-      <h3>Refreshments</h3>
-      <p>Bottled water is available when you arrive.</p>
-      <p>Tea, coffee and hot chocolate, when available, are served afterwards if you'd like to stay for a chat.</p>
-    </article>
+    <details class="circle-detail-card">
+      <summary>Refreshments</summary>
+      <div class="circle-detail-content">
+        <p>Bottled water is available when you arrive.</p>
+        <p>Tea, coffee and hot chocolate, when available, are served afterwards if you'd like to stay for a chat.</p>
+      </div>
+    </details>
 
-    <article class="circle-detail-card">
-      <h3>Accessibility</h3>
-      <p>The venue is wheelchair accessible.</p>
-    </article>
+    <details class="circle-detail-card">
+      <summary>Accessibility</summary>
+      <div class="circle-detail-content">
+        <p>The venue is wheelchair accessible.</p>
+      </div>
+    </details>
 
-    <article class="circle-detail-card">
-      <h3>Parking</h3>
-      <p>There is a very small car park with extremely limited spaces, with street parking available nearby.</p>
-    </article>
+    <details class="circle-detail-card">
+      <summary>Parking</summary>
+      <div class="circle-detail-content">
+        <p>There is a very small car park with extremely limited spaces, with street parking available nearby.</p>
+      </div>
+    </details>
   </div>
 
   <div class="circle-facebook-wrap">
@@ -279,5 +291,6 @@
   </div>
 </footer>
 
+<script src="js/circle-details.js?v=20260812-1"></script>
 </body>
 </html>
