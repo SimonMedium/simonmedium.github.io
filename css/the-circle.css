@@ -195,8 +195,8 @@
 }
 
 .circle-signature-inner{
-  background:linear-gradient(135deg,#2d5d53,#547f6c);
-  color:#fff;
+  background:var(--circle-dark);
+  color:var(--circle-light);
   border-radius:18px;
   padding: 42px 34px;
   text-align:center;
