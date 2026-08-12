@@ -160,10 +160,21 @@
 
 .circle-who-card h3,
 .circle-question-card h3,
-.circle-detail-card h3{
+.circle-detail-card summary{
   margin:0 0 12px;
   color:var(--circle-deep);
   font-family:"Marcellus",Georgia,serif;
+}
+
+.circle-detail-card summary{
+  font-size:1.17em;
+  font-weight:400;
+  list-style:none;
+  pointer-events:none;
+}
+
+.circle-detail-card summary::-webkit-details-marker{
+  display:none;
 }
 
 .circle-details-section{
@@ -237,6 +248,40 @@
 
   .circle-who-grid{
     grid-template-columns:repeat(2,1fr);
+  }
+
+  .circle-details-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .circle-detail-card{
+    padding:0;
+    overflow:hidden;
+  }
+
+  .circle-detail-card summary{
+    min-height:64px;
+    margin:0;
+    padding:17px 24px;
+    display:flex;
+    align-items:center;
+    cursor:pointer;
+    pointer-events:auto;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .circle-detail-card[open] summary{
+    padding-bottom:10px;
+  }
+
+  .circle-detail-content{
+    padding:0 24px 19px;
+  }
+
+  .circle-detail-content p:last-child{
+    margin-bottom:0;
   }
 
 }
