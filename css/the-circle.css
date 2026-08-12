@@ -261,19 +261,38 @@
   }
 
   .circle-detail-card summary{
-    min-height:64px;
+    min-height:72px;
     margin:0;
-    padding:17px 24px;
+    padding:15px 24px;
     display:flex;
-    align-items:center;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
     cursor:pointer;
     pointer-events:auto;
     touch-action:manipulation;
     -webkit-tap-highlight-color:transparent;
   }
 
+  .circle-detail-card summary::after{
+    content:"View details";
+    margin-top:3px;
+    color:var(--circle-gold);
+    font-family:"Manrope",Arial,sans-serif;
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    line-height:1.2;
+    text-transform:uppercase;
+  }
+
   .circle-detail-card[open] summary{
+    min-height:auto;
     padding-bottom:10px;
+  }
+
+  .circle-detail-card[open] summary::after{
+    content:none;
   }
 
   .circle-detail-content{
