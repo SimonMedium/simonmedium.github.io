@@ -41,15 +41,40 @@
     return "service-standard";
   };
 
-  const months = events.reduce((groups, event) => {
+  const groupedMonths = events.reduce((groups, event) => {
     const key = `${event.parsedDate.getFullYear()}-${event.parsedDate.getMonth()}`;
     if (!groups[key]) groups[key] = [];
     groups[key].push(event);
     return groups;
   }, {});
 
-  container.innerHTML = Object.values(months)
-    .map((monthEvents) => {
+  const months = Object.values(groupedMonths);
+
+  const tabs = months
+    .map((monthEvents, index) => {
+      const monthDate = monthEvents[0].parsedDate;
+      const monthLabel = monthDate.toLocaleDateString("en-GB", {
+        month: "long"
+      });
+
+      return `
+        <button
+          class="month-tab${index === 0 ? " active" : ""}"
+          id="month-tab-${index}"
+          type="button"
+          role="tab"
+          aria-selected="${index === 0}"
+          aria-controls="month-panel-${index}"
+          tabindex="${index === 0 ? "0" : "-1"}"
+        >
+          ${escapeHtml(monthLabel)}
+        </button>
+      `;
+    })
+    .join("");
+
+  const panels = months
+    .map((monthEvents, index) => {
       const monthDate = monthEvents[0].parsedDate;
       const monthName = monthDate.toLocaleDateString("en-GB", {
         month: "long",
@@ -65,10 +90,7 @@
             day: "numeric",
             month: "short"
           });
-          const details = [
-            event.location,
-            `Starts at ${event.time}`
-          ]
+          const details = [event.location, `Starts at ${event.time}`]
             .filter(Boolean)
             .map(escapeHtml)
             .join(" · ");
@@ -92,15 +114,55 @@
         .join("");
 
       return `
-        <section class="service-month" aria-labelledby="month-${monthDate.getFullYear()}-${monthDate.getMonth()}">
-          <div class="service-month-heading">
-            <span aria-hidden="true"></span>
-            <h3 id="month-${monthDate.getFullYear()}-${monthDate.getMonth()}">${escapeHtml(monthName)}</h3>
-            <span aria-hidden="true"></span>
-          </div>
+        <section
+          class="service-month-panel"
+          id="month-panel-${index}"
+          role="tabpanel"
+          aria-labelledby="month-tab-${index}"
+          ${index === 0 ? "" : "hidden"}
+        >
+          <h3 class="selected-month-title">${escapeHtml(monthName)}</h3>
           <div class="service-list">${cards}</div>
         </section>
       `;
     })
     .join("");
+
+  container.innerHTML = `
+    <div class="month-tabs" role="tablist" aria-label="Choose a month">
+      ${tabs}
+    </div>
+    <div class="month-panels">
+      ${panels}
+    </div>
+  `;
+
+  const tabButtons = Array.from(container.querySelectorAll(".month-tab"));
+  const monthPanels = Array.from(
+    container.querySelectorAll(".service-month-panel")
+  );
+
+  const selectMonth = (selectedIndex) => {
+    tabButtons.forEach((button, index) => {
+      const selected = index === selectedIndex;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+      monthPanels[index].hidden = !selected;
+    });
+  };
+
+  tabButtons.forEach((button, index) => {
+    button.addEventListener("click", () => selectMonth(index));
+
+    button.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex =
+        (index + direction + tabButtons.length) % tabButtons.length;
+      selectMonth(nextIndex);
+      tabButtons[nextIndex].focus();
+    });
+  });
 })();
