@@ -186,7 +186,7 @@
 }
 
 .circle-belief{
-  padding: 70px; 28px 90px;
+  padding:70px 28px 90px;
 }
 
 .circle-signature{
@@ -241,6 +241,28 @@
 
   .circle-who-grid{
     grid-template-columns:1fr;
+  }
+
+  .circle-nervous-section{
+    padding-bottom:34px;
+  }
+
+  .circle-belief{
+    padding:0 20px 44px;
+  }
+
+  .circle-signature{
+    max-width:460px;
+  }
+
+  .circle-signature-inner{
+    padding:24px 18px;
+    border-radius:14px;
+  }
+
+  .circle-signature-inner p{
+    font-size:1.12rem;
+    line-height:1.55;
   }
 
 }
