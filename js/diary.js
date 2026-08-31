@@ -15,6 +15,12 @@ const diary = [
   {date:"2026-10-05",time:"7:00pm",venue:"Heaton and Byker Spiritualist Church",location:"Newcastle upon Tyne",type:"Night of Mediumship",status:"upcoming"},
   {date:"2026-10-12",time:"7:30pm",venue:"Birtley Spiritualist Church",location:"Birtley",type:"Divine Service",status:"upcoming"},
   {date:"2026-10-18",time:"6:00pm",venue:"Cramlington SNU Spiritualist Church",location:"Cramlington",type:"Divine Service",status:"upcoming"},
-  {date:"2026-10-31",time:"7:00pm",venue:"Gateshead & Whickham Spiritualist Centre",location:"Gateshead",type:"Halloween Special",status:"upcoming"}
+  {date:"2026-10-31",time:"7:00pm",venue:"Gateshead & Whickham Spiritualist Centre",location:"Gateshead",type:"Halloween Special",status:"upcoming"},
+
+  {date:"2026-11-01",time:"6:30pm",venue:"Wallsend Spiritualist Church",location:"Wallsend",type:"Divine Service",status:"upcoming"},
+  {date:"2026-11-18",time:"7:00pm",venue:"Chichester Christian Spiritualist Church",location:"South Shields",type:"Divine Service",status:"upcoming"},
+  {date:"2026-11-22",time:"6:30pm",venue:"Heaton and Byker Spiritualist Church",location:"Newcastle upon Tyne",type:"Divine Service",status:"upcoming"},
+  {date:"2026-11-26",time:"7:30pm",venue:"Beacon of Light Spiritualist Church",location:"",type:"Service",status:"upcoming"},
+  {date:"2026-11-29",time:"7:00pm",venue:"Hartlepool Spiritualist Church",location:"Masonic Hall",type:"Divine Service",status:"upcoming"}
 ];
 window.diary = diary;
