@@ -7,6 +7,7 @@ const diary = [
   {date:"2026-09-05",time:"7:00pm",venue:"The Circle @ Greenside",location:"Greenside Community Centre, NE40 4AA",type:"Open Circle",status:"upcoming"},
   {date:"2026-09-06",time:"6:00pm",venue:"Durham SNU Spiritualist Church",location:"Durham",type:"Divine Service",status:"upcoming"},
   {date:"2026-09-09",time:"7:00pm",venue:"Jarrow Spiritualist Church",location:"Jarrow",type:"Divine Service",status:"upcoming"},
+  {date:"2026-09-13",time:"6:30pm",venue:"Sunderland Spiritualist Church",location:"Sunderland",type:"Divine Service",status:"upcoming"},
   {date:"2026-09-16",time:"7:30pm",venue:"Elite Christian Spiritualist Church",location:"",type:"Night of Mediumship",status:"upcoming"},
   {date:"2026-09-27",time:"6:00pm",venue:"Craghead Spiritualist Church",location:"Craghead",type:"Divine Service",status:"upcoming"},
   {date:"2026-09-29",time:"7:00pm",venue:"Willington Spiritualist Church",location:"Willington",type:"Night of Mediumship",status:"upcoming"},
