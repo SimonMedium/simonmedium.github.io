@@ -5,6 +5,9 @@
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
+  const monthKey = (date) =>
+    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+
   const allEvents = window.diary
     .filter((event) => event.status !== "cancelled")
     .map((event) => ({
@@ -13,48 +16,29 @@
     }))
     .sort((a, b) => a.parsedDate - b.parsedDate);
 
-  const monthKey = (date) =>
-    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+  const futureEvents = allEvents.filter((event) => event.parsedDate >= today);
 
-  const previousMonthKey = (date) => {
-    const previous = new Date(date.getFullYear(), date.getMonth() - 1, 1, 12, 0, 0);
-    return monthKey(previous);
-  };
-
-  const stagedFromMonth = "2026-12";
-
-  const lastServiceByMonth = allEvents.reduce((latest, event) => {
-    if (event.kind === "message" || event.type === "Open Circle") return latest;
+  const serviceMonthKeys = [];
+  futureEvents.forEach((event) => {
+    if (event.kind === "message") return;
     const key = monthKey(event.parsedDate);
-    if (!latest[key] || event.parsedDate > latest[key]) latest[key] = event.parsedDate;
-    return latest;
-  }, {});
+    if (!serviceMonthKeys.includes(key)) serviceMonthKeys.push(key);
+  });
 
-  const monthIsReleased = (event) => {
-    const key = monthKey(event.parsedDate);
-    if (key < stagedFromMonth) return true;
+  let visibleMonthKeys = serviceMonthKeys.slice(0, 3);
 
-    const previousKey = previousMonthKey(event.parsedDate);
-    const previousLastService = lastServiceByMonth[previousKey];
+  const currentMonthKey = monthKey(today);
+  const hasFutureMessageThisMonth = futureEvents.some(
+    (event) => event.kind === "message" && monthKey(event.parsedDate) === currentMonthKey
+  );
 
-    if (!previousLastService) {
-      const firstOfMonth = new Date(
-        event.parsedDate.getFullYear(),
-        event.parsedDate.getMonth(),
-        1
-      );
-      return today >= firstOfMonth;
-    }
+  if (hasFutureMessageThisMonth && !visibleMonthKeys.includes(currentMonthKey)) {
+    visibleMonthKeys = [currentMonthKey, ...visibleMonthKeys].slice(0, 3);
+  }
 
-    const releaseDate = new Date(previousLastService);
-    releaseDate.setDate(releaseDate.getDate() + 1);
-    releaseDate.setHours(0, 0, 0, 0);
-    return today >= releaseDate;
-  };
-
-  const events = allEvents
-    .filter((event) => monthIsReleased(event))
-    .filter((event) => event.parsedDate >= today);
+  const events = futureEvents.filter((event) =>
+    visibleMonthKeys.includes(monthKey(event.parsedDate))
+  );
 
   if (!events.length) {
     container.innerHTML =
@@ -84,13 +68,15 @@
   };
 
   const groupedMonths = events.reduce((groups, event) => {
-    const key = `${event.parsedDate.getFullYear()}-${event.parsedDate.getMonth()}`;
+    const key = monthKey(event.parsedDate);
     if (!groups[key]) groups[key] = [];
     groups[key].push(event);
     return groups;
   }, {});
 
-  const months = Object.values(groupedMonths);
+  const months = visibleMonthKeys
+    .filter((key) => groupedMonths[key])
+    .map((key) => groupedMonths[key]);
 
   const tabs = months
     .map((monthEvents, index) => {
