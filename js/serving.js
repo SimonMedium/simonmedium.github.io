@@ -5,14 +5,56 @@
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const events = window.diary
+  const allEvents = window.diary
     .filter((event) => event.status !== "cancelled")
     .map((event) => ({
       ...event,
       parsedDate: new Date(`${event.date}T12:00:00`)
     }))
-    .filter((event) => event.parsedDate >= today)
     .sort((a, b) => a.parsedDate - b.parsedDate);
+
+  const monthKey = (date) =>
+    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+
+  const previousMonthKey = (date) => {
+    const previous = new Date(date.getFullYear(), date.getMonth() - 1, 1, 12, 0, 0);
+    return monthKey(previous);
+  };
+
+  const stagedFromMonth = "2026-12";
+
+  const lastServiceByMonth = allEvents.reduce((latest, event) => {
+    if (event.kind === "message" || event.type === "Open Circle") return latest;
+    const key = monthKey(event.parsedDate);
+    if (!latest[key] || event.parsedDate > latest[key]) latest[key] = event.parsedDate;
+    return latest;
+  }, {});
+
+  const monthIsReleased = (event) => {
+    const key = monthKey(event.parsedDate);
+    if (key < stagedFromMonth) return true;
+
+    const previousKey = previousMonthKey(event.parsedDate);
+    const previousLastService = lastServiceByMonth[previousKey];
+
+    if (!previousLastService) {
+      const firstOfMonth = new Date(
+        event.parsedDate.getFullYear(),
+        event.parsedDate.getMonth(),
+        1
+      );
+      return today >= firstOfMonth;
+    }
+
+    const releaseDate = new Date(previousLastService);
+    releaseDate.setDate(releaseDate.getDate() + 1);
+    releaseDate.setHours(0, 0, 0, 0);
+    return today >= releaseDate;
+  };
+
+  const events = allEvents
+    .filter((event) => monthIsReleased(event))
+    .filter((event) => event.parsedDate >= today);
 
   if (!events.length) {
     container.innerHTML =
@@ -37,7 +79,7 @@
     if (type === "Open Circle") return "service-circle";
     if (type === "Night of Mediumship") return "service-mediumship";
     if (type === "Divine Service") return "service-divine";
-    if (type === "Halloween Special") return "service-special";
+    if (["Halloween Special", "Christmas", "New Year"].includes(type)) return "service-special";
     return "service-standard";
   };
 
@@ -90,10 +132,12 @@
             day: "numeric",
             month: "short"
           });
-          const details = [event.location, `Starts at ${event.time}`]
-            .filter(Boolean)
-            .map(escapeHtml)
-            .join(" · ");
+          const details = event.message
+            ? escapeHtml(event.message)
+            : [event.location, event.time ? `Starts at ${event.time}` : ""]
+                .filter(Boolean)
+                .map(escapeHtml)
+                .join(" · ");
 
           return `
             <article class="service-card">
