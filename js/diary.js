@@ -13,7 +13,7 @@ const diary = [
   {date:"2026-09-29",time:"7:00pm",venue:"Willington Spiritualist Church",location:"Willington",type:"Night of Mediumship",status:"upcoming"},
 
   {date:"2026-10-03",time:"7:00pm",venue:"The Circle @ Greenside",location:"Greenside Community Centre, NE40 4AA",type:"Open Circle",status:"upcoming"},
-  {date:"2026-10-05",time:"7:00pm",venue:"Heaton and Byker Spiritualist Church",location:"Newcastle upon Tyne",type:"Night of Mediumship",status:"upcoming"},
+  {date:"2026-10-19",time:"7:00pm",venue:"Heaton and Byker Spiritualist Church",location:"Newcastle upon Tyne",type:"Night of Mediumship",status:"upcoming"},
   {date:"2026-10-12",time:"7:30pm",venue:"Birtley Spiritualist Church",location:"Birtley",type:"Divine Service",status:"upcoming"},
   {date:"2026-10-18",time:"6:00pm",venue:"Cramlington SNU Spiritualist Church",location:"Cramlington",type:"Divine Service",status:"upcoming"},
   {date:"2026-10-31",time:"7:00pm",venue:"Gateshead & Whickham Spiritualist Centre",location:"Gateshead",type:"Halloween Special",status:"upcoming"},
