@@ -23,12 +23,13 @@ const diary = [
   {date:"2026-11-18",time:"7:00pm",venue:"Chichester Christian Spiritualist Church",location:"South Shields",type:"Night of Mediumship",status:"upcoming"},
   {date:"2026-11-22",time:"6:30pm",venue:"Heaton and Byker Spiritualist Church",location:"Newcastle upon Tyne",type:"Divine Service",status:"upcoming"},
   {date:"2026-11-26",time:"7:30pm",venue:"Beacon of Light Spiritualist Church",location:"",type:"Night of Mediumship",status:"upcoming"},
-  {date:"2026-11-28",time:"7:00pm",venue:"The Circle @ Greenside with Andrew Walker",location:"Greenside Community Centre, NE40 4AA",type:"Night of Mediumship",status:"upcoming"},
+
   {date:"2026-11-29",time:"7:00pm",venue:"Hartlepool Spiritualist Church",location:"Masonic Hall",type:"Divine Service",status:"upcoming"},
 
   {date:"2026-12-06",time:"6:30pm",venue:"Monkwearmouth Spiritualist Church",location:"",type:"Divine Service",status:"upcoming"},
   {date:"2026-12-13",time:"6:00pm",venue:"Spiritualist Friendship Centre, Horden",location:"Horden",type:"Divine Service",status:"upcoming"},
   {date:"2026-12-15",time:"7:00pm",venue:"Willington Spiritualist Church",location:"Willington",type:"Night of Mediumship",status:"upcoming"},
+  {date:"2026-12-19",time:"7:00pm",venue:"The Circle @ Greenside with Andrew Walker",location:"Greenside Community Centre, NE40 4AA",type:"Night of Mediumship",status:"upcoming"},
   {date:"2026-12-25",time:"",venue:"Merry Christmas 🎄",location:"",type:"Christmas",status:"upcoming",kind:"message",message:"However you’re spending today, I hope you find a little peace and something to smile about. And for those missing someone this Christmas, remember love never really leaves us. 💜"},
 
   {date:"2027-01-01",time:"",venue:"Happy New Year 🎉",location:"",type:"New Year",status:"upcoming",kind:"message",message:"A new year doesn’t mean we have to have everything figured out. Just keep moving forward, keep learning and trust where your path takes you. Here’s to a year of kindness, growth and new beginnings. 💜"},
