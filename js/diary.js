@@ -17,7 +17,6 @@ const diary = [
   {date:"2026-10-12",time:"7:30pm",venue:"Birtley Spiritualist Church",location:"Birtley",type:"Divine Service",status:"upcoming"},
   {date:"2026-10-14",time:"7:00pm",venue:"Gateshead & Whickham Spiritualist Centre",location:"Gateshead",type:"Divine Service",status:"upcoming"},
   {date:"2026-10-18",time:"6:00pm",venue:"Cramlington SNU Spiritualist Church",location:"Cramlington",type:"Divine Service",status:"upcoming"},
-  {date:"2026-10-31",time:"7:00pm",venue:"Gateshead & Whickham Spiritualist Centre",location:"Gateshead",type:"Halloween Special",status:"upcoming"},
 
   {date:"2026-11-01",time:"6:30pm",venue:"Wallsend Spiritualist Church",location:"Wallsend",type:"Divine Service",status:"upcoming"},
   {date:"2026-11-18",time:"7:00pm",venue:"Chichester Christian Spiritualist Church",location:"South Shields",type:"Night of Mediumship",status:"upcoming"},
